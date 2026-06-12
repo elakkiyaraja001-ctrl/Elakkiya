@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Course Catalog | ELAKKIYA ACADEMY Porayar</title>
+    <meta name="description"
+        content="Enroll in advanced MongoDB, Express.js, Angular, and Node.js (MEAN Stack) courses at ELAKKIYA ACADEMY in Porayar. Guided by Senior Trainer Elakkiya A.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Academy Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo-block">
+                <div class="logo-icon">E</div>
+                <div>
+                    <span class="logo-text">ELAKKIYA ACADEMY</span>
+                    <span class="logo-tagline">Porayar Campus</span>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="btn-add-course" aria-label="Add a new course">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add Course
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="hero-tag">Specialized Tech Bootcamp</span>
+                <h1>Master the <span>MEAN Full Stack</span> Development</h1>
+                <p class="hero-description">
+                    Become a professional software engineer with our intensive practical courses covering MongoDB,
+                    Express.js,
+                    Angular, and Node.js. Learn database architecture, REST API design, and client-side single-page
+                    applications
+                    from the ground up.
+                </p>
+                <div class="hero-stats">
+                    <!-- Quick action / metrics can go here -->
+                </div>
+            </div>
+
+            <!-- Trainer Bio Card (Elakkiya A.) -->
+            <div class="trainer-card" id="trainer-profile-card">
+                <div class="trainer-img-wrapper">
+                    <img class="trainer-img" src="trainer_elakkiya.png" alt="Elakkiya A. - Senior Trainer">
+                </div>
+                <div class="trainer-info">
+                    <div class="trainer-title">Senior Software Trainer</div>
+                    <h2 class="trainer-name">Elakkiya A.</h2>
+                    <p class="trainer-bio">
+                        Specialist in Full-Stack JavaScript/TypeScript engineering with 8+ years of industry training
+                        experience.
+                        Empowers students to build commercial-grade SaaS architectures.
+                    </p>
+                    <div class="trainer-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        ELAKKIYA ACADEMY, Porayar Branch
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Grid Workspace -->
+    <main class="container">
+        <div class="workspace-grid">
+
+            <!-- Left Column: Course Directory -->
+            <section class="catalog-section">
+                <div class="catalog-header">
+                    <div class="catalog-title">
+                        <h2>Course Catalog</h2>
+                        <p>Explore modules and click to view full-stack sandbox flows</p>
+                    </div>
+                </div>
+
+                <div class="search-filter-block">
+                    <!-- Search input -->
+                    <div class="search-wrapper">
+                        <span class="search-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </span>
+                        <input type="text" id="input-search" class="search-input"
+                            placeholder="Search courses (e.g. MongoDB, Angular, Mongoose...)"
+                            aria-label="Search courses">
+                    </div>
+
+                    <!-- Category filter tabs -->
+                    <div class="filter-tabs" id="filter-tab-container" role="tablist">
+                        <button class="filter-tab active" id="tab-all" data-category="All" role="tab"
+                            aria-selected="true">All
+                            Courses</button>
+                        <button class="filter-tab" id="tab-mongodb" data-category="MongoDB" role="tab"
+                            aria-selected="false">MongoDB</button>
+                        <button class="filter-tab" id="tab-express" data-category="Express.js" role="tab"
+                            aria-selected="false">Express.js</button>
+                        <button class="filter-tab" id="tab-angular" data-category="Angular" role="tab"
+                            aria-selected="false">Angular</button>
+                        <button class="filter-tab" id="tab-nodejs" data-category="Node.js" role="tab"
+                            aria-selected="false">Node.js</button>
+                        <button class="filter-tab" id="tab-mean" data-category="MEAN Stack" role="tab"
+                            aria-selected="false">MEAN
+                            Stack</button>
+                    </div>
+                </div>
+
+                <!-- Dynamic Course List -->
+                <div class="courses-grid" id="courses-container">
+                    <!-- Injected via JavaScript -->
+                </div>
+            </section>
+
+            <!-- Right Column: Interactive MEAN Stack Flow Simulator -->
+            <aside class="simulator-panel glass-card" id="flow-simulator-panel">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <div class="logo-icon"
+                            style="width:28px; height:28px; font-size: 0.9rem; background: var(--gradient-neon);">M
+                        </div>
+                        <div>
+                            <h3>MEAN Flow Sandbox</h3>
+                            <p id="selected-flow-badge">Active Flow: READ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <!-- Selected Course Overview -->
+                    <div class="selected-summary" id="course-summary-card">
+                        <div class="summary-title-row">
+                            <h4 id="summary-course-title">Select a course to inspect flow</h4>
+                            <span class="course-badge badge-mean" id="summary-course-badge">MEAN</span>
+                        </div>
+                        <p class="course-desc" id="summary-course-desc" style="font-size:0.85rem;">
+                            Click on any course from the catalog to load its full-stack structural mappings.
+                        </p>
+                        <div class="syllabus-list" id="summary-syllabus-list">
+                            <!-- Syllabus items dynamically rendered -->
+                        </div>
+                    </div>
+
+                    <!-- Simulator Tab Actions (CRUD toggler) -->
+                    <div class="simulator-actions-tab" id="sim-crud-actions">
+                        <button class="sim-action-btn active" data-action="READ">READ (Fetch)</button>
+                        <button class="sim-action-btn" data-action="CREATE">CREATE (Save)</button>
+                        <button class="sim-action-btn" data-action="UPDATE">UPDATE (Edit)</button>
+                        <button class="sim-action-btn" data-action="DELETE">DELETE (Remove)</button>
+                    </div>
+
+                    <!-- Visual Request Pipeline Flow -->
+                    <div class="flow-diagram-wrapper" id="request-pipeline-diagram">
+                        <div class="flow-node" id="node-angular-box">
+                            <div class="flow-node-icon node-angular active" style="color: #ff5477;">🅰️</div>
+                            <span>Angular</span>
+                        </div>
+                        <div class="flow-arrow active" id="arrow-client-server">➡️</div>
+                        <div class="flow-node" id="node-express-box">
+                            <div class="flow-node-icon node-express" style="color: #f3f1f6;">⚡</div>
+                            <span>Node / Express</span>
+                        </div>
+                        <div class="flow-arrow" id="arrow-server-db">➡️</div>
+                        <div class="flow-node" id="node-mongodb-box">
+                            <div class="flow-node-icon node-mongodb" style="color: #5bc475;">🍃</div>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+
+                    <!-- Sandbox Live Status Log Console -->
+                    <div class="console-log" id="sim-console-log">
+                        <div class="log-line">
+                            <span class="log-tag">[System]</span>
+                            <span>Simulator initialized. Ready for operations.</span>
+                        </div>
+                    </div>
+
+                    <!-- Code Viewer Blocks -->
+                    <div>
+                        <div class="code-panel-tabs" id="code-tabs-container">
+                            <button class="code-panel-tab active" data-tech="angular">Angular (Client)</button>
+                            <button class="code-panel-tab" data-tech="express">Express (Server API)</button>
+                            <button class="code-panel-tab" data-tech="mongodb">MongoDB (Database)</button>
+                        </div>
+                        <div class="code-container">
+                            <button class="copy-btn" id="btn-copy-code" title="Copy code snippet"
+                                aria-label="Copy code">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                            <pre class="code-box angular-view"
+                                id="code-box-display">Select a course to view full-stack source code mapping.</pre>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Create/Edit Course Modal Dialog -->
+    <div class="modal-overlay" id="course-modal">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h3 id="modal-title-text">Add New Course</h3>
+                <button class="close-modal" id="btn-close-modal" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="course-form">
+                <input type="hidden" id="field-course-id">
+
+                <div class="form-group">
+                    <label for="field-title" class="form-label">Course Title</label>
+                    <input type="text" id="field-title" class="form-control"
+                        placeholder="e.g. Mongoose Advanced Aggregations" required>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="field-category" class="form-label">Category Stack</label>
+                        <select id="field-category" class="form-control" required>
+                            <option value="MongoDB">MongoDB</option>
+                            <option value="Express.js">Express.js</option>
+                            <option value="Angular">Angular</option>
+                            <option value="Node.js">Node.js</option>
+                            <option value="MEAN Stack">MEAN Stack</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field-price" class="form-label">Fee Structure (INR)</label>
+                        <input type="number" id="field-price" class="form-control" placeholder="e.g. 15000" min="0"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="field-duration" class="form-label">Course Duration</label>
+                        <input type="text" id="field-duration" class="form-control" placeholder="e.g. 6 Weeks" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="field-rating" class="form-label">Initial Rating</label>
+                        <input type="number" id="field-rating" class="form-control" placeholder="4.8" min="1" max="5"
+                            step="0.1" value="4.8">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="field-desc" class="form-label">Short Description</label>
+                    <textarea id="field-desc" class="form-control"
+                        placeholder="Summarize the core objective of this training path..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="field-syllabus" class="form-label">Syllabus Highlights (comma-separated)</label>
+                    <textarea id="field-syllabus" class="form-control"
+                        placeholder="Database Tuning, Query Optimizers, Schema Security" required></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btn-cancel-modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="btn-save-course">Save Course</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="app-toast">
+        <span class="toast-icon">⚡</span>
+        <span class="toast-message" id="toast-message-text">Success! Dynamic toast notifications ready.</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <div class="logo-icon" style="width:24px; height:24px; font-size: 0.8rem;">E</div>
+                <span class="logo-text" style="font-size: 1.1rem;">ELAKKIYA ACADEMY</span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#trainer-profile-card">Trainer Profile</a></li>
+                <li><a href="#courses-container">Course Directory</a></li>
+                <li><a href="#flow-simulator-panel">MEAN Flow Simulator</a></li>
+            </ul>
+            <p class="footer-text">
+                &copy; 2026 ELAKKIYA ACADEMY, Porayar Campus. Built with <span>&hearts;</span> for Full-Stack Learning.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="courses.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
